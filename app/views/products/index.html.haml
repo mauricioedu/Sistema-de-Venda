@@ -1,0 +1,21 @@
+%h1 Lista de Produtos
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th Nome
+      %th Preço
+      %th Imagem
+      %th
+
+
+    - @products.each do |product|
+      %tr
+        %td= link_to product.nome, product
+        %td= number_to_currency_br product.preco
+        %td= image_tag product.image.thumb
+        %td
+          = link_to 'Editar', edit_product_path(product)
+          = link_to 'Excluir', product, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%p= link_to 'New Product', new_product_path, class: "btn btn-primary"

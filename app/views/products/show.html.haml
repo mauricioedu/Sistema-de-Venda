@@ -1,0 +1,10 @@
+%p#notice= notice
+
+%h1= @product.nome
+
+%p= number_to_currency_br @product.preco
+%p= image_tag @product.image, heigth: "300"
+
+= link_to 'Edit', edit_product_path(@product)
+\|
+= link_to 'Back', products_path
