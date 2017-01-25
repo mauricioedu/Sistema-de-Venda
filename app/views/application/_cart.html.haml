@@ -1,0 +1,6 @@
+-if @cart
+  %p.navbar-text.navbar-right
+    -if @cart.empty?
+      O carrinho esta vazio.
+    -else
+      =link_to "Você tem #{pluralize @cart.count, "item"}.", cart_path 
