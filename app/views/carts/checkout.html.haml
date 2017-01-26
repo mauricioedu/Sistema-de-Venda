@@ -15,18 +15,22 @@
     Total Preço:
     =number_to_currency_br @cart.total_preco
 
-    =form_for @order_form, url: orders_path do |f|
-      %h3 Dados do Comprador
-      =f.fields_for :user, f.object.user do |u|
-        .form-group
-          %p=u.text_field :nome, placeholder: "Nome", class: "form-control input-lg"
-          %p
-            =u.text_field :email, placeholder: "Email", class: "form-control"
-        .form-group
-          .row
-            %p.col-md-6=u.text_field :endereco, placeholder: "Endereco", class: "form-control"
-            %p.col-md-3=u.text_field :cpf, placeholder: "CPF", class: "form-control"
-            %p.col-md-3=u.text_field :telefone, placeholder: "Telefone", class: "form-control"
-            %p.col-md-3=u.text_field :cep, placeholder: "CEP", class: "form-control"
-          %p=u.country_select :pais, { priority_countries: ["GB", "FR", "DE" ] }, { class: "form-control" }
-          %p=u.text_field :cidade, class: "form-control", placeholder: "Cidade"
+=form_for @order_form, url: orders_path do |f|
+  =render "orders/errors"
+
+  %h3 Dados do Comprador
+  =f.fields_for :user, f.object.user do |u|
+    .form-group
+      %p=u.text_field :nome, placeholder: "Nome", class: "form-control input-lg"
+      %p
+        =u.text_field :email, placeholder: "Email", class: "form-control"
+    .form-group
+      .row
+        %p.col-md-6=u.text_field :endereco, placeholder: "Endereco", class: "form-control"
+        %p.col-md-3=u.text_field :cpf, placeholder: "CPF", class: "form-control"
+        %p.col-md-3=u.text_field :telefone, placeholder: "Telefone", class: "form-control"
+        %p.col-md-3=u.text_field :cep, placeholder: "CEP", class: "form-control"
+      %p=u.country_select :pais, { priority_countries: ["GB", "FR", "DE" ] }, { class: "form-control" }
+      %p=u.text_field :cidade, class: "form-control", placeholder: "Cidade"
+
+  %p=f.submit "Finalizar Pedido", class: "btn btn-primary"

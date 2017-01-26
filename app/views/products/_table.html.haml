@@ -1,0 +1,16 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th Nome
+      %th Preco
+      %th Imagem
+      %th
+
+  - products.each do |product|
+    %tr
+      %td= link_to product.nome, product
+      %td= number_to_currency_br product.preco
+      %td= image_tag product.image.thumb
+      %td
+        = link_to 'Editar', edit_product_path(product)
+        = link_to 'Deletar', product, :method => :delete, :data => { :confirm => 'Quer mesmo excluir?' }

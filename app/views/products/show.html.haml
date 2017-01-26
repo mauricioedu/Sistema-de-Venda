@@ -4,6 +4,7 @@
 
 %p= number_to_currency_br @product.preco
 %p= image_tag @product.image, heigth: "300"
+%p= @product.category.name
 
 %p= link_to "Add ao Carinho", add_cart_path, method: :post, class: "btn btn-primary"
 
