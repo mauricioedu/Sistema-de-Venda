@@ -5,18 +5,18 @@
       %ul
         - @product.errors.full_messages.each do |msg|
           %li= msg
-
+  
   .field
     = f.label :nome
     = f.text_field :nome
   .field
-    = f.label :preco
+    = f.label :preço
     = f.text_field :preco
   .field
-    = f.label :image
+    = f.label :imagem
     = f.file_field :image
   .field
-    = f.label :category
-    = f.select :category_id, Category.all.map { |c| [c.name, c.id] }  
+    = f.label :categoria
+    = f.select :category_id, Category.all.map { |c| [c.name, c.id] }
   .actions
-    = f.submit 'Save'
+    = f.submit 'Salvar'
